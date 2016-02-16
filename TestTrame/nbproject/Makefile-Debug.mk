@@ -52,15 +52,13 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=/usr/local/lib/libserial.a /usr/local/lib/libserial.so -lpthread
+LDLIBSOPTIONS=/usr/local/lib/libserial.a -lpthread
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/testtrame
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/testtrame: /usr/local/lib/libserial.a
-
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/testtrame: /usr/local/lib/libserial.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/testtrame: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
