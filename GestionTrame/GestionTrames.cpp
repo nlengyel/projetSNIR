@@ -1,134 +1,141 @@
 /* 
  * File:   gestionTrames.cpp
- * Author: eleve
+ * Author: nlengyel
  * 
  * Created on 17 février 2016, 11:15
  */
 #include <SerialStream.h>
 #include <SerialPort.h>
-#include "gestionTrames.h"
+#include "GestionTrames.h"
 #include <string>
 #include <string.h>
 using namespace LibSerial;
 
-gestionTrames::gestionTrames() {}
-gestionTrames::gestionTrames(SerialPort *inst){
+GestionTrames::GestionTrames() {}
+GestionTrames::GestionTrames(SerialPort *inst){
     portS=inst;
 }
-gestionTrames::~gestionTrames() {
+GestionTrames::~GestionTrames() {
     //fermeture de la liaison
     portS->Close();
 }
-/*definition des */
-int gestionTrames::tete[]= {0x03,0xFF,0xFF,0xFF,0x0A,0x0A};
-int gestionTrames::fin={0x0D};
+/*definition des attributs*/
+int GestionTrames::tete[]= {0x03,0xFF,0xFF,0xFF,0x0A,0x0A};
+int GestionTrames::fin={0x0D};
+//getter DonneesTrame
+string GestionTrames::getDonneesTrame(){
+    return DonneesTrame;
+}
+char GestionTrames::getChecksum(){
+    return checksum;
+}
 /*getter en hexadecimal*/
-std::string gestionTrames::getIdentifiant() {
+std::string GestionTrames::getIdentifiant() {
     return Identifiant;
 }
 
-std::string gestionTrames::getSoft() {
+std::string GestionTrames::getSoft() {
     return Soft;
 }
 
-std::string gestionTrames::getType() {
+std::string GestionTrames::getType() {
     return Type;
 }
 
-std::string gestionTrames::getCoup() {
+std::string GestionTrames::getCoup() {
     return Coup;
 }
 
-std::string gestionTrames::getEtat() {
+std::string GestionTrames::getEtat() {
     return Etat;
 }
 
-std::string gestionTrames::getTPile() {
+std::string GestionTrames::getTPile() {
     return TPile;
 }
 
-std::string gestionTrames::getTCapa() {
+std::string GestionTrames::getTCapa() {
     return TCapa;
 }
 
-std::string gestionTrames::getTemp() {
+std::string GestionTrames::getTemp() {
     return Temp;
 }
 
-std::string gestionTrames::getDHoraire() {
+std::string GestionTrames::getDHoraire() {
     return DHoraire;
 }
 
-std::string gestionTrames::getCompInhib() {
+std::string GestionTrames::getCompInhib() {
     return CompInhib;
 }
 
-std::string gestionTrames::getCompFuite() {
+std::string GestionTrames::getCompFuite() {
     return CompFuite;
 }
 
-std::string gestionTrames::getCompAbs() {
+std::string GestionTrames::getCompAbs() {
     return CompAbs;
 }
 
-std::string gestionTrames::getIndex() {
+std::string GestionTrames::getIndex() {
     return Index;
 }
 
 /*setter en hexadecimal*/
-void gestionTrames::setIdentifiant(string id) {
+void GestionTrames::setIdentifiant(string id) {
     Identifiant = id;
 }
 
-void gestionTrames::setSoft(string soft) {
+void GestionTrames::setSoft(string soft) {
     Soft = soft;
 }
 
-void gestionTrames::setType(string type) {
+void GestionTrames::setType(string type) {
     Type = type;
 }
 
-void gestionTrames::setCoup(string coup) {
+void GestionTrames::setCoup(string coup) {
     Coup = coup;
 }
 
-void gestionTrames::setEtat(string etat) {
+void GestionTrames::setEtat(string etat) {
     Etat = etat;
 }
 
-void gestionTrames::setTPile(string tensionPile) {
+void GestionTrames::setTPile(string tensionPile) {
     TPile = tensionPile;
 }
 
-void gestionTrames::setTCapa(string tensionCapa) {
+void GestionTrames::setTCapa(string tensionCapa) {
     TCapa = tensionCapa;
 }
 
-void gestionTrames::setTemp(string temperature) {
+void GestionTrames::setTemp(string temperature) {
     Temp = temperature;
 }
 
-void gestionTrames::setDHoraire(string debitHoraire) {
+void GestionTrames::setDHoraire(string debitHoraire) {
     DHoraire = debitHoraire;
 }
 
-void gestionTrames::setCompInhib(string compteurInhibition) {
+void GestionTrames::setCompInhib(string compteurInhibition) {
     CompInhib = compteurInhibition;
 }
 
-void gestionTrames::setCompFuite(string compteurFuite) {
+void GestionTrames::setCompFuite(string compteurFuite) {
     CompFuite = compteurFuite;
 }
 
-void gestionTrames::setCompAbs(string compteurAbsent) {
+void GestionTrames::setCompAbs(string compteurAbsent) {
     CompAbs = compteurAbsent;
 }
 
-void gestionTrames::setIndex(string index) {
+void GestionTrames::setIndex(string index) {
     Index = index;
 }
 
-void gestionTrames::configuration(){
+void GestionTrames::configuration(){
     portS->Open();
     //setup bauds
     portS->SetBaudRate(SerialPort::BAUD_19200);
@@ -142,7 +149,7 @@ void gestionTrames::configuration(){
     portS->SetFlowControl(SerialPort::FLOW_CONTROL_NONE);
 }
 /*calcule du checksum*/
-char gestionTrames::calChecksum(string donnees) {
+char GestionTrames::calChecksum(string donnees) {
     //tmp prend valeur parametre 
     string tmp = donnees;
     char data[40];
@@ -156,36 +163,31 @@ char gestionTrames::calChecksum(string donnees) {
         // on fait un ou exclusif entre checksum et recep puis on additionne
         checksum ^= recep;
     }
-    //printf(" %02X \n", checksum);
-    //std::cout << std::hex << checksum;
     return checksum;
 }
 /*creation des données de la trame*/
-std::string gestionTrames::creerDonnees() {
-    /*creationdes données dans une meme string*/
-    std::string resultatDonnee = Identifiant + Soft + Type + Coup + Etat + TPile + TCapa + Temp + DHoraire + CompInhib + CompFuite + CompAbs + Index;
-    return resultatDonnee;
+std::string GestionTrames::creerDonnees() {
+    /*creation des données dans une meme string*/
+    DonneesTrame = Identifiant + Soft + Type + Coup + Etat + TPile + TCapa + Temp + DHoraire + CompInhib + CompFuite + CompAbs + Index;
+    return DonneesTrame;
 }
 /*envoyer des trames*/
-int gestionTrames::envoyerTrames(string donnees) {
-    
+int GestionTrames::envoyerTrames(string donnees) {
+    calChecksum(donnees);
     
     for(int i =0;i<=5;i++){
         this->portS->WriteByte(tete[i]);
     }
+    sleep(2);
     //ecriture données de trame
     portS->Write(donnees);
+    sleep(2);
     //ecriture checksum
     portS->WriteByte(checksum);
+    sleep(2);
     //ecriture du caractere de fin 
     portS->WriteByte(fin);
-    
     return EXIT_SUCCESS ;    
 }
-void gestionTrames::test(){
-    char resul;
-    resul =calChecksum("00128B550100242913000000000010E00004D1");
-    printf("%02X",resul);
-    envoyerTrames("00128B550100242913000000000010E00004D1");
-}
+
 

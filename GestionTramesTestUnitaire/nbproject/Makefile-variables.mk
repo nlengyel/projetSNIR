@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux-x86
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux-x86
-CND_ARTIFACT_NAME_Debug=testtrame
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux-x86/testtrame
+CND_ARTIFACT_NAME_Debug=gestiontramestestunitaire
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux-x86/gestiontramestestunitaire
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Debug=testtrame.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/testtrame.tar
+CND_PACKAGE_NAME_Debug=gestiontramestestunitaire.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/gestiontramestestunitaire.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux-x86
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux-x86
-CND_ARTIFACT_NAME_Release=testtrame
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/testtrame
+CND_ARTIFACT_NAME_Release=gestiontramestestunitaire
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/gestiontramestestunitaire
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Release=testtrame.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/testtrame.tar
+CND_PACKAGE_NAME_Release=gestiontramestestunitaire.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/gestiontramestestunitaire.tar
 #
 # include compiler specific variables
 #

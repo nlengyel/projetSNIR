@@ -1,6 +1,6 @@
 /* 
- * File:   gestionTrames.h
- * Author: eleve
+ * File:   GestionTrames.h
+ * Author: nlengyel
  *
  * Created on 17 février 2016, 11:15
  */
@@ -11,15 +11,18 @@
 #include <string>
 #include <SerialPort.h>
 using namespace std; 
-class gestionTrames {
+class GestionTrames {
 public:
-    gestionTrames();
-    gestionTrames(SerialPort*);
-    ~gestionTrames();
+    GestionTrames();
+    GestionTrames(SerialPort*);
+    ~GestionTrames();
     int envoyerTrames(string donnees);
     string creerDonnees();
-    void test();
     void configuration();
+    //getter checksum
+    char getChecksum();
+    //getter DonneesTrame
+    string getDonneesTrame();
     //getter en hexadecimal
     string getIdentifiant();
     string getSoft();
@@ -61,6 +64,8 @@ private:
     static int fin ;
 /*---------attributs--------*/
     char checksum;
+    std::string DonneesTrame;
+    
     //identifiant
     std::string Identifiant;
     //soft

@@ -35,7 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/gestionTrames.o \
+	${OBJECTDIR}/GestionTrames.o \
 	${OBJECTDIR}/main.o
 
 
@@ -57,18 +57,18 @@ LDLIBSOPTIONS=/usr/local/lib/libserial.a -lpthread
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/testtrame
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/gestiontrame
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/testtrame: /usr/local/lib/libserial.a
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/gestiontrame: /usr/local/lib/libserial.a
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/testtrame: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/gestiontrame: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/testtrame ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/gestiontrame ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/gestionTrames.o: gestionTrames.cpp 
+${OBJECTDIR}/GestionTrames.o: GestionTrames.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/gestionTrames.o gestionTrames.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/GestionTrames.o GestionTrames.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -81,7 +81,7 @@ ${OBJECTDIR}/main.o: main.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/testtrame
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/gestiontrame
 
 # Subprojects
 .clean-subprojects:

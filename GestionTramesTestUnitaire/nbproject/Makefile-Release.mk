@@ -35,8 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/gestionTrames.o \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/_ext/1651624927/GestionTrames.o \
+	${OBJECTDIR}/GestionTramesTesteur.o
 
 
 # C Compiler Flags
@@ -53,27 +53,25 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=/usr/local/lib/libserial.a -lpthread
+LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/testtrame
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/gestiontramestestunitaire
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/testtrame: /usr/local/lib/libserial.a
-
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/testtrame: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/gestiontramestestunitaire: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/testtrame ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/gestiontramestestunitaire ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/gestionTrames.o: gestionTrames.cpp 
+${OBJECTDIR}/_ext/1651624927/GestionTrames.o: ../GestionTrame/GestionTrames.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1651624927
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1651624927/GestionTrames.o ../GestionTrame/GestionTrames.cpp
+
+${OBJECTDIR}/GestionTramesTesteur.o: GestionTramesTesteur.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/gestionTrames.o gestionTrames.cpp
-
-${OBJECTDIR}/main.o: main.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/GestionTramesTesteur.o GestionTramesTesteur.cpp
 
 # Subprojects
 .build-subprojects:
@@ -81,7 +79,7 @@ ${OBJECTDIR}/main.o: main.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/testtrame
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/gestiontramestestunitaire
 
 # Subprojects
 .clean-subprojects:
